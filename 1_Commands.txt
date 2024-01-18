@@ -1,0 +1,33 @@
+cOMMANDS :
+
+npm install -g @angular/cli
+
+node -v
+npm -v
+ng v
+
+Creating New Project
+ ng new [name]     
+
+Creating New Component
+ ng generate component [name]
+
+Creating New Module
+ ng generate module [name]
+
+Creating New Directive
+ ng generate directive [name]
+
+Creating New Pipe
+ ng generate pipe [name]
+
+Creating New Service
+ ng generate service [name]
+
+Creating New Guard
+ ng generate guard [name]
+
+-----
+
+ng serve
+ng serve --port 1234
