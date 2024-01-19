@@ -1,0 +1,8 @@
+*ngFor :
+
+Note : We can also get index using ngFor.
+
+Example :
+<ul>
+  <li *ngFor="let item of items; let i = index"> {{ item }} </li>
+</ul>
