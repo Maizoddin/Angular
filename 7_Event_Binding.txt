@@ -27,7 +27,7 @@ export class AppComponent {
 <input (input)="onInputChange($event)" placeholder="Type something">
 <p>You typed: {{ inputValue }}</p>
 
-=========================
+======================================================================
 
 Example 2:
 // app.component.ts
@@ -45,5 +45,6 @@ export class AppComponent {
 }
 
 --------
+
 <!-- app.component.html -->
 <button (click)="onButtonClick()">Click me</button>
