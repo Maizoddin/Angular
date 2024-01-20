@@ -1,6 +1,32 @@
 @Input() :
-We can pass Data from Parent to Child.
+
+  Note :
+  We can pass Data from Parent to Child.
+
+  Example : 
+
+  parent.html
+  <child [user]="John"></child>
+
+  child.ts
+  @Input user:string = ""
+
+---------------------------------------------------
 
 @Output():
-We can pass data from Child to Parent when some event occurs in Child
-Use EventEmitter to create custom event and emit the data
+
+  Note :
+  It is used to notify the parent that an event has occured in child component.
+  We can pass data from Child to Parent when some event occurs in Child.
+  Use EventEmitter to create custom event and emit the data.
+
+  Example : 
+
+  child.ts
+   @Output customEvent = new EventEmitter<string>()
+   onClick(){
+     this.customEvent.emit(this.user)
+   }
+
+   parent.html
+   <child (customEvent)="handleEvent($event)"></child>
