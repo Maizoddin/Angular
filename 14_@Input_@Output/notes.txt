@@ -1,0 +1,6 @@
+@Input() :
+We can pass Data from Parent to Child.
+
+@Output():
+We can pass data from Child to Parent when some event occurs in Child
+Use EventEmitter to create custom event and emit the data
