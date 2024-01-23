@@ -15,9 +15,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   message = 'Hello, Angular!';
+  user = {name:"John", id:1}
 }
 
 ----
 
 <!-- app.component.html -->
 <p>{{ message }}</p>
+<p>{{ user.name }}</p>
+

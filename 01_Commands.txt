@@ -1,4 +1,4 @@
-cOMMANDS :
+COMMANDS :
 
 npm install -g @angular/cli
 
