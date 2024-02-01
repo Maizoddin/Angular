@@ -10,5 +10,5 @@ day: string = 'wednesday';
   <h1 *ngSwitchCase="'monday'">Monday</h1>
   <h1 *ngSwitchCase="'tuesday'">Tuesday</h1>
   <h1 *ngSwitchCase="'wednesday'">Wednesday</h1>
-  <h1 *ngWsitchDefault>Sunday</h1>
+  <h1 *ngSwitchDefault>Sunday</h1>
 </ng-container>
