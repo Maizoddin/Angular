@@ -7,6 +7,13 @@ Note :
 
 1] ngOnChanges() :
  It runs whenever @Input properties values will changes.
+ Here we can access the changes property.
+ Example :
+   @Input() name!: string;
+   ngOnChanges(changes: SimpleChanges) {
+    console.log('Prev', changes['name'].previousValue);
+    console.log('Cur', changes['name'].currentValue);
+   }
 
 2] ngOnInit() :
  It runs once after all the values will get initialized.
