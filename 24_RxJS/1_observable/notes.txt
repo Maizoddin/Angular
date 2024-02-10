@@ -1,0 +1,53 @@
+Observable :
+   * Observable emits data only when there is a subscriber.
+
+   * It is unicast:
+       meaning each subscriber gets an independent execution of the observable.
+       Each subscriber of an Observable receives its own independent stream of values emitted by the Observable.
+
+   * Observables are often used for handling asynchronous data streams, such as HTTP    
+     requests or user input events.
+   * Here we can't emit values from outside.
+
+   * Creating an Observable :
+      custom_observable:Observable<number> = new Observable((observer) => {
+         observer.next(2);
+         observer.next(3);
+         observer.next(4);
+         observer.next(5);
+         observer.next(6);
+         observer.error(new Error('Something went wrong'));
+         observer.complete();
+      });
+
+   * Sucscribing to an Observable :
+       sub:Subscription = custom_observable.subscribe(
+        (val)=>{console.log(val)},
+        (err)=>{console.log(err.message)},
+        ()=>{console.log("Completed")}
+       )
+
+   * UnSubscribing to an Observable :
+      sub.unsubscribe();
+      
+--------------------------------------------------
+
+Output of Example project :
+
+Subscriber-1 :  1                 Click Start Subscriber-1
+Subscriber-1 :  2
+Subscriber-1 :  3
+Subscriber-1 :  4
+Subscriber-1 :  5
+Subscriber-1 :  6
+Subscriber-2 :  7                 Click Start Subscriber-2
+Subscriber-1 :  8
+Subscriber-2 :  9
+Subscriber-1 :  10
+Subscriber-2 :  11
+Subscriber-1 :  12
+Subscriber-2 :  13
+
+
+So here both subscriber-1 and subscriber-2 gets separate execution, 
+so when i start subscriber-2 that time it will get the current value after every "2" seconds.
