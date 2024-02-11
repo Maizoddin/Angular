@@ -41,53 +41,68 @@ Observable :
           
    * pipe()
      We can use pipe to transform the data before subscribing.
-     Example :
+     Example 1: Using map
+
         .service 
         students_observable: Observable<any> = new Observable((observer) => {
-    observer.next([
-      {
-        id: 1,
-        name: 'john',
-        gender: 'male',
-      },
-      {
-        id: 2,
-        name: 'Alexa',
-        gender: 'female',
-      },
-      {
-        id: 3,
-        name: 'Monica',
-        gender: 'female',
-      },
-      {
-        id: 4,
-        name: 'suzain',
-        gender: 'female',
-      },
-    ]);
-  });
+          observer.next([
+              {
+                id: 1,
+                name: 'john',
+                gender: 'male',
+              },
+              {
+                id: 2,
+                name: 'Alexa',
+                gender: 'female',
+              },
+              {
+                id: 3,
+                name: 'Monica',
+                gender: 'female',
+              },
+              {
+                id: 4,
+                name: 'suzain',
+                gender: 'female',
+              },
+            ]);
+         });
 
   .component
-  export class AppComponent {
-  studentsList = [];
+      export class AppComponent {
+      studentsList = [];
 
-  constructor(private testService: TestService) {}
+      constructor(private testService: TestService) {}
 
-  ngOnInit() {
-    this.testService.students_observable
+      ngOnInit() {
+        this.testService.students_observable
+          .pipe(
+            map((data) => {
+              for (let student of data) {
+                student['age'] = 20;
+              }
+              return data;
+            })
+          )
+          .subscribe((students) => (this.studentsList = students));
+      }
+    }
+
+----------
+
+Example 2: Using Map and Filter
+   .service
+    obs:Observable<number> = from([1,2,3,4]) as Observable<number>
+   
+   .component
+    this.testService.obs
       .pipe(
-        map((data) => {
-          for (let student of data) {
-            student['age'] = 20;
-          }
-          return data;
-        })
+        map((num) => num * 3),
+        filter((num) => num % 2 == 0)
       )
-      .subscribe((students) => (this.studentsList = students));
-  }
-}
-              
+      .subscribe((res) => console.log(res));
+
 --------------------------------------------------------------
 
 Output of Example project :
