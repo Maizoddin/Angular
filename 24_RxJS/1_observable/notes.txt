@@ -4,7 +4,6 @@ Observable :
    * It is unicast:
        meaning each subscriber gets an independent execution of the observable.
        Each subscriber of an Observable receives its own independent stream of values emitted by the Observable.
-
    * Observables are often used for handling asynchronous data streams, such as HTTP    
      requests or user input events.
    * Here we can't emit values from outside.
@@ -29,8 +28,67 @@ Observable :
 
    * UnSubscribing to an Observable :
       sub.unsubscribe();
-      
---------------------------------------------------
+   
+   * of() :
+     It takes values and creates an observable.
+     Example :
+            custom_observable:Observable<number> = of(2,4,6,8) as Observable<number>;
+   
+   * from() :
+     It takes sequence and creates an observable.
+     Example : 
+             custom_observable:Observable<number> = from([1,2,3,4]) as Observable<number>;
+          
+   * pipe()
+     We can use pipe to transform the data before subscribing.
+     Example :
+        .service 
+        students_observable: Observable<any> = new Observable((observer) => {
+    observer.next([
+      {
+        id: 1,
+        name: 'john',
+        gender: 'male',
+      },
+      {
+        id: 2,
+        name: 'Alexa',
+        gender: 'female',
+      },
+      {
+        id: 3,
+        name: 'Monica',
+        gender: 'female',
+      },
+      {
+        id: 4,
+        name: 'suzain',
+        gender: 'female',
+      },
+    ]);
+  });
+
+  .component
+  export class AppComponent {
+  studentsList = [];
+
+  constructor(private testService: TestService) {}
+
+  ngOnInit() {
+    this.testService.students_observable
+      .pipe(
+        map((data) => {
+          for (let student of data) {
+            student['age'] = 20;
+          }
+          return data;
+        })
+      )
+      .subscribe((students) => (this.studentsList = students));
+  }
+}
+              
+--------------------------------------------------------------
 
 Output of Example project :
 
