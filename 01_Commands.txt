@@ -45,4 +45,10 @@ TypeScript :
    Example :
          let std = {id:1,name:"John"}
          console.log(std['name'], std.name)
+* We can specify optional datatype 
+  Example : status: string | null = null;
+------------------------
 
+Note :
+* The class which have @Injectable only for those classes object we can create through   
+  constructor.

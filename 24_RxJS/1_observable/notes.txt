@@ -1,5 +1,6 @@
 Observable :
    * Observable emits data only when there is a subscriber.
+   * observer acts as delivery boy.
 
    * It is unicast:
        meaning each subscriber gets an independent execution of the observable.
