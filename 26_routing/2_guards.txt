@@ -95,3 +95,81 @@ export const canActivateChild: CanActivateChildFn = (
   if(loggedIn) return true;
   else return false
 };
+
+
+
+============================================================
+3] CanDeactivate :
+
+canDeactivate.guard.ts
+import { Injectable } from '@angular/core';
+import { CanDeactivate } from '@angular/router';
+import { Observable } from 'rxjs';
+
+export interface CanComponentDeactivate {
+  canExit: () => Observable<boolean> | Promise<boolean> | boolean;
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CanDeactivateGuard implements CanDeactivate<CanComponentDeactivate> {
+  canDeactivate(component: CanComponentDeactivate): Observable<boolean> | Promise<boolean> | boolean {
+    return component.canExit();
+  }
+}
+
+------------
+
+.component.ts
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.css'],
+})
+export class SignupComponent {
+  @ViewChild('formRef') ref: NgForm;
+  submit: boolean = false;
+  canExit() {
+    if (this.ref.dirty && !this.submit) {
+      return confirm('Do you want to leave?');
+    } else {
+      return true;
+    }
+  }
+  onSubmit() {
+    this.submit = true;
+  }
+}
+
+-------------
+
+.html
+<div class="container">
+  <form #formRef="ngForm" (ngSubmit)="onSubmit()">
+    <div class="feild">
+      <label for="name">Name : </label>
+      <input type="text" id="name" name="Name" ngModel />
+    </div>
+    <div class="feild">
+      <label for="password">Password : </label>
+      <input type="password" id="password" name="Password" ngModel />
+    </div>
+    <div class="feild">
+      <label for="phone">Phone No : </label>
+      <input type="phone" id="phone" name="Phone" ngModel />
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</div>
+
+-------------
+routing.module.ts
+ {path:'signup', component:SignupComponent, canDeactivate:[CanDeactivateGuard]},
+
+=================================================================

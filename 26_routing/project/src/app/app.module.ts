@@ -14,6 +14,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { ProductComponent } from './product/product.component'
 import { AuthService } from './services/auth.service';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +29,9 @@ import { LoginComponent } from './login/login.component';
     AboutComponent,
     ProductComponent,
     LoginComponent,
+    SignupComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

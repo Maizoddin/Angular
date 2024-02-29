@@ -12,6 +12,8 @@
     <li [routerLink]="['/products']" routerLinkActive="active">Products</li>
     <li [routerLink]="['/contact']" routerLinkActive="active">Contact</li>
     <li>
+      <button [routerLink]="['/signup']">SignUp</button>
+      /
       <button *ngIf="!isLoggedIn" (click)="onLogin()">Login</button>
       <button *ngIf="isLoggedIn" (click)="onLogout()">Logout</button>
     </li>

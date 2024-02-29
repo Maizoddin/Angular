@@ -8,6 +8,8 @@ import { ContactComponent } from './contact/contact.component';
 import { DetailsComponent } from './details/details.component';
 import { CanActivateGuard } from './guards/canActivate.guard';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { CanDeactivateGuard } from './guards/canDeactivate.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -21,6 +23,7 @@ const routes: Routes = [
   },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: LoginComponent },
+  {path:'signup', component:SignupComponent, canDeactivate:[CanDeactivateGuard]},
   { path: '**', component: ErrorComponent },
 ];
 
