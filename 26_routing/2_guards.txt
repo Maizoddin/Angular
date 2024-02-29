@@ -1,3 +1,5 @@
+Note : For class based approach @Injectable is needed and not needed for funcional approach
+
 1] CanActivate :
 
 app.routing.module.ts
